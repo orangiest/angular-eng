@@ -1,0 +1,13 @@
+<cdk-virtual-scroll-viewport
+  itemSize="50"
+  class="example-viewport">
+  <div
+    *ngFor="let sentence of sentences"
+    class="example-item">
+    <span
+      *ngFor="let text of sentence.content"
+      [ngClass]="{tagTrue:text.isMark==true,tagFalse:text.isMark==false,notWord:text.isWord==false}"
+      (click)="tag(text)"
+      (contextmenu)="onRightClick(text)">{{text.word}} </span>
+  </div>
+</cdk-virtual-scroll-viewport>

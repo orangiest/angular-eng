@@ -1,0 +1,13 @@
+<app-header></app-header>
+<mat-drawer-container class="example-container">
+        <mat-drawer mode="side" opened>
+            <div class="sideItem"></div>
+        </mat-drawer>
+        <mat-drawer-content>
+            <div class="container" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center center">
+                <app-video [urlVideo]="urlVideo" [urlPoster]="urlPoster" fxFlex class="video"></app-video>
+                <app-subtitle fxFlex class="item"></app-subtitle>
+            </div>
+        </mat-drawer-content>
+</mat-drawer-container>
+

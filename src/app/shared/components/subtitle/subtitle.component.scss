@@ -1,0 +1,37 @@
+.example-viewport {
+    height: 350px;
+  }
+.example-item {
+    margin: 5px 0px;
+    font-size: 24px;
+}  
+
+span .tagTrue .tagFalse:hover {
+    color: red;
+}
+
+.tagTrue {
+    color: black;
+}
+  
+
+.tagFalse {
+    color: green;
+}
+
+.notWord {
+    color: black;
+}
+
+.notWord:hover {
+    color: black;
+}
+
+.percent {
+    margin-left: 5px;
+}
+
+.video {
+    margin-left: auto;
+    margin-right: auto;
+}

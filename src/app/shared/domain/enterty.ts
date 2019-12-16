@@ -3,3 +3,8 @@ export class Content {
     isMark: boolean;
     isWord: boolean;
 }
+
+export class VideoSource {
+    src: string;
+    provider: string;
+}

@@ -1,22 +1,24 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-import { TranslateModule } from '@ngx-translate/core';
-
-import { WebviewDirective } from './directives/';
-import { FormsModule } from '@angular/forms';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { VideoComponent } from './components/video/video.component';
-import { HeaderComponent } from './components/header/header.component';
-import { MatToolbarModule, MatIconModule, MatButtonModule } from '@angular/material';
-import { SubtitleComponent } from './components/subtitle/subtitle.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { ClipboardModule } from 'ngx-clipboard';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule, MatIconModule, MatToolbarModule,MatInputModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { TranslateModule } from '@ngx-translate/core';
+import { ClipboardModule } from 'ngx-clipboard';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { HeaderComponent } from './components/header/header.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { SubtitleComponent } from './components/subtitle/subtitle.component';
+import { WebviewDirective } from './directives/';
+
+
 
 
 @NgModule({
-  declarations: [PageNotFoundComponent, WebviewDirective, VideoComponent, HeaderComponent, SubtitleComponent],
+  declarations: [PageNotFoundComponent, WebviewDirective, HeaderComponent, SubtitleComponent, DialogComponent,],
   imports: [
     CommonModule,
     TranslateModule,
@@ -26,15 +28,19 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatButtonModule,
     ScrollingModule,
     ClipboardModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   exports: [
     TranslateModule,
     WebviewDirective,
     FormsModule,
-    VideoComponent,
     HeaderComponent,
-    SubtitleComponent
-  ]
+    SubtitleComponent,
+    DialogComponent,
+  ],
+  entryComponents: [DialogComponent],
 })
 export class SharedModule { }

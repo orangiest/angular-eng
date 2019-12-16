@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import * as fs from 'fs';
 import * as Subtitle from 'subtitle'
 import { Content } from '../../../shared/domain/enterty';
+import { getSubtitles } from 'youtube-captions-scraper';
 
 @Injectable({
   providedIn: 'root'
@@ -56,7 +57,7 @@ export class SubService {
   
  pattern2 = new RegExp("[A-Za-z]+");
 
-  // 格式化字幕
+  // 格式化字幕 从文件
   loadSrt(path: string) {
     let res = fs.readFileSync(path, 'utf8');
     this.sentences = Subtitle.parse(res)
@@ -83,11 +84,6 @@ export class SubService {
     return this.sentences;
   }
 
-  //debug
-  testFun() {
-    let s = "This is a test, test is only a test?"
-    console.log(s.match(/\b(\w+)\b|\b\S/g))
-  }
 
   addMarked(word:string) {
     this.marked.push(word);
@@ -175,5 +171,31 @@ export class SubService {
     }
     this.sentences = this.sentences;
     console.log(this.marked);
+  }
+
+  youtubeSrt(youtubeId) {
+    
+    getSubtitles({
+      videoID: youtubeId, // youtube video id
+      lang: 'en' // default: `en`
+    }).then(captions => {
+      console.log(captions);
+      this.sentences = captions;
+      this.sentences.forEach(e => {
+        e.content = this.tokenize(e.text);
+      });
+  
+      for (let sentence of this.sentences) {
+        let text:string[] = sentence.content
+        sentence.content = [];
+        for (const word of text) {
+          let content: Content = this.makeContent(word);
+          sentence.content.push(content);
+        }
+      }
+  
+      this.calPercent();
+    });
+   
   }
 }

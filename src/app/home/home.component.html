@@ -1,11 +1,11 @@
 <app-header></app-header>
 <mat-drawer-container class="example-container">
-        <mat-drawer mode="side" opened>
+        <mat-drawer mode="side" >
             <div class="sideItem"></div>
         </mat-drawer>
         <mat-drawer-content>
             <div class="container" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center center">
-                <app-video [urlVideo]="urlVideo" [urlPoster]="urlPoster" fxFlex class="video"></app-video>
+                <div plyr style="width: 640px;" plyrTitle="Video 1" [plyrPlaysInline]="true" [plyrSources]="videoSources" (plyrInit)="player = $event" (plyrPlay)="played($event)"></div>
                 <app-subtitle fxFlex class="item"></app-subtitle>
             </div>
         </mat-drawer-content>

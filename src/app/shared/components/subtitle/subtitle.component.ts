@@ -10,8 +10,6 @@ import { Content } from '../../domain/enterty';
 })
 export class SubtitleComponent implements OnInit {
 
-  // sentences = [];
-  // percentNumber = 0;
 
   constructor(private subService:SubService,private _clipboardService: ClipboardService) { 
     // this.percentNumber = this.subService.getPercentNumber();
@@ -26,11 +24,6 @@ export class SubtitleComponent implements OnInit {
     return this.subService.sentences;
   }
 
-  showSub() {
-    // this.sentences = this.subService.sentences;
-    // console.log(this.sentences)
-  }
-
   tag(text:Content) {
     this.subService.tag(text);
   }
@@ -39,5 +32,4 @@ export class SubtitleComponent implements OnInit {
     this._clipboardService.copyFromContent(text.word);
   }
 
-  // items = Array.from({length: 100000}).map((_, i) => `Item #${i}`);
 }
